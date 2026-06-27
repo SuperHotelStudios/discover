@@ -8,10 +8,6 @@ export default function Hero() {
 
         <div className="col-lg-8">
 
-          <span className="hero-badge">
-            Roblox Community Directory
-          </span>
-
           <h1 className="hero-title">
             Discover
             <br />

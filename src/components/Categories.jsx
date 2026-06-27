@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 export default function Categories() {
   const categories = [
     {
@@ -54,9 +55,9 @@ export default function Categories() {
                 {category.description}
               </p>
 
-              <button className="btn-discover mt-3">
+              <Link className="btn-discover mt-3">
                 Explore
-              </button>
+              </Link>
 
             </div>
 

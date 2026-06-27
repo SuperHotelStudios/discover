@@ -6,12 +6,16 @@ export default function FeaturedServers() {
 
       <div className="text-center mb-5">
 
-        <h2 className="section-title">
+        <span className="hero-badge">
+          Featured
+        </span>
+
+        <h2 className="section-title mt-3">
           Featured Communities
         </h2>
 
         <p className="section-subtitle">
-          Discover is just getting started.
+          Discover and join the best Roblox communities.
         </p>
 
       </div>
@@ -23,17 +27,18 @@ export default function FeaturedServers() {
         </div>
 
         <h3 className="fw-bold mb-3">
-          Launch Your Community
+          Your Community Could Be Here
         </h3>
 
         <p className="text-secondary mx-auto featured-text">
-          Be among the first communities listed on Discover and
-          help shape the future of Roblox community discovery.
+          Featured communities will appear here once listings
+          begin getting approved. Submit your community today
+          and become one of the first communities on Discover.
         </p>
 
         <Link
           to="/advertise"
-          className="btn-discover text-decoration-none mt-3 d-inline-block"
+          className="btn-discover text-decoration-none mt-4 d-inline-block"
         >
           Submit Community
         </Link>

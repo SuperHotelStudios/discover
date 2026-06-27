@@ -2,65 +2,50 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="custom-navbar fixed-top">
 
-      <div className="container">
+      <div className="container navbar-wrapper">
 
         <Link
-          className="navbar-brand brand-logo"
+          className="brand-logo"
           to="/"
         >
-          Discover
+          <img
+            src="/logo.png"
+            alt="Discover"
+            className="navbar-logo"
+          />
+          
         </Link>
 
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#nav"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+        <div className="navbar-links">
 
-        <div
-          className="collapse navbar-collapse show"
-          id="nav"
-        >
+          <Link className="custom-link" to="/">
+            Home
+          </Link>
 
-          <ul className="navbar-nav ms-auto">
+          <Link className="custom-link" to="/servers">
+            Communities
+          </Link>
 
-            <li className="nav-item">
-              <Link className="nav-link custom-link" to="/">
-                Home
-              </Link>
-            </li>
+          <Link className="custom-link" to="/advertise">
+            Advertise
+          </Link>
 
-            <li className="nav-item">
-              <Link className="nav-link custom-link" to="/servers">
-                Communities
-              </Link>
-            </li>
+          <Link className="custom-link" to="/leaderboard">
+            Leaderboard
+          </Link>
 
-            <li className="nav-item">
-              <Link className="nav-link custom-link" to="/advertise">
-                Advertise
-              </Link>
-            </li>
+        </div>
 
-            <li className="nav-item">
-              <Link className="nav-link custom-link" to="/leaderboard">
-                Leaderboard
-              </Link>
-            </li>
+        <div className="navbar-actions">
 
-          </ul>
-
-          {/* <Link
-            to="/login"
+          <Link
+            to="/advertise"
             className="btn-discover text-decoration-none"
           >
-            Sign In
-          </Link> */}
+            Submit
+          </Link>
 
         </div>
 
