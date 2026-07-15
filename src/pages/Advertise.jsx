@@ -1,16 +1,41 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { api } from "../services/api";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import { Navigate } from "react-router-dom";
 
 export default function Advertise() {
   const [formData, setFormData] = useState({
-    name: "",
-    invite: "",
-    category: "Design",
+    inviteLink: "",
+    category: "Roleplay",
     description: "",
     banner: "",
-    logo: ""
   });
+  const [categories, setCategories] = useState([]);
 
+  const { isAuthenticated, loading } = useAuth();
+  const [submitting, setSubmitting] = useState(false);
   const [message, setMessage] = useState("");
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    async function loadCategories() {
+      try {
+        const data = await api("/categories");
+        setCategories(data);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    loadCategories();
+  }, []);
+
+  if (loading) return null;
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
 
   const showToast = (text) => {
     setMessage(text);
@@ -23,109 +48,93 @@ export default function Advertise() {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    if (
-      name === "description" &&
-      value.length > 500
-    ) {
+    if (name === "description" && value.length > 500) {
       return;
     }
 
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (
-      !formData.name.trim() ||
-      !formData.invite.trim() ||
-      !formData.description.trim()
+      !formData.inviteLink.trim() ||
+      !formData.description.trim() ||
+      !formData.banner.trim()
     ) {
-      showToast("Please fill all fields.");
+      showToast("Please fill all required fields.");
       return;
     }
 
     const discordRegex =
       /^https?:\/\/(www\.)?(discord\.gg|discord\.com\/invite)\/.+$/;
 
-    if (!discordRegex.test(formData.invite)) {
+    if (!discordRegex.test(formData.inviteLink)) {
       showToast("Please enter a valid Discord invite link.");
       return;
     }
 
-    console.log(formData);
+    try {
+      const response = await api("/advertisements", {
+        method: "POST",
+        body: JSON.stringify({
+          inviteLink: formData.inviteLink,
+          description: formData.description,
+          banner: formData.banner,
+          category: formData.category,
+        }),
+      });
 
-    showToast("Community submitted successfully!");
+      showToast(response.message);
 
-    setFormData({
-      name: "",
-      invite: "",
-      category: "Design",
-      description: ""
-    });
+      setFormData({
+        inviteLink: "",
+        description: "",
+        banner: "",
+        category: "Roleplay",
+      });
+
+      setTimeout(() => {
+        navigate("/servers");
+      }, 1500);
+    } catch (err) {
+      console.error(err);
+      showToast(err.message);
+    }
   };
 
   return (
     <section className="container advertise-page">
-
       <div className="text-center mb-5">
-
-        <h1 className="section-title">
-          Advertise Your Community
-        </h1>
+        <h1 className="section-title">Advertise Your Community</h1>
 
         <p className="section-subtitle">
-          Submit your Roblox community to be reviewed and listed on Discover.
+          Paste your Discord invite below. Discover will automatically fetch
+          your server information from Discord.
         </p>
-
       </div>
 
       <div className="glass-card advertise-form p-5">
-
         <form onSubmit={handleSubmit}>
-
           <div className="mb-4">
-
-            <label className="form-label">
-              Community Name
-            </label>
+            <label className="form-label">Discord Invite</label>
 
             <input
               type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              className="form-control custom-input"
-              placeholder="Enter community name"
-            />
-
-          </div>
-
-          <div className="mb-4">
-
-            <label className="form-label">
-              Discord Invite
-            </label>
-
-            <input
-              type="text"
-              name="invite"
-              value={formData.invite}
+              name="inviteLink"
+              value={formData.inviteLink}
               onChange={handleChange}
               className="form-control custom-input"
               placeholder="https://discord.gg/..."
             />
-
           </div>
 
           <div className="mb-4">
-
-            <label className="form-label">
-              Category
-            </label>
+            <label className="form-label">Category</label>
 
             <select
               name="category"
@@ -133,43 +142,16 @@ export default function Advertise() {
               onChange={handleChange}
               className="form-select custom-input"
             >
-              <option value="Design">
-                Design
-              </option>
-
-              <option value="Development">
-                Development
-              </option>
-
-              <option value="Roleplay">
-                Roleplay
-              </option>
+              {categories.map((category) => (
+                <option key={category.id} value={category.name}>
+                  {category.icon} {category.name}
+                </option>
+              ))}
             </select>
-
           </div>
 
           <div className="mb-4">
-
-            <label className="form-label">
-              Logo URL
-            </label>
-
-            <input
-              type="text"
-              name="logo"
-              value={formData.logo}
-              onChange={handleChange}
-              className="form-control custom-input"
-              placeholder="https://..."
-            />
-
-          </div>
-
-          <div className="mb-4">
-
-            <label className="form-label">
-              Banner URL
-            </label>
+            <label className="form-label">Banner URL</label>
 
             <input
               type="text"
@@ -177,16 +159,12 @@ export default function Advertise() {
               value={formData.banner}
               onChange={handleChange}
               className="form-control custom-input"
-              placeholder="https://..."
+              placeholder="Use a permanent image URL. Discord attachment links expire. Recommended hosts: Imgur, Imgbox, or Postimages."
             />
-
           </div>
 
           <div className="mb-4">
-
-            <label className="form-label">
-              Description
-            </label>
+            <label className="form-label">Description</label>
 
             <textarea
               rows="5"
@@ -200,26 +178,15 @@ export default function Advertise() {
             <div className="text-secondary mt-2">
               {formData.description.length}/500
             </div>
-
           </div>
 
-          <button
-            type="submit"
-            className="btn-discover"
-          >
-            Submit Community
+          <button type="submit" className="btn-discover">
+            Advertise Community
           </button>
-
         </form>
-
       </div>
 
-      {message && (
-        <div className="toast-message">
-          {message}
-        </div>
-      )}
-
+      {message && <div className="toast-message">{message}</div>}
     </section>
   );
 }

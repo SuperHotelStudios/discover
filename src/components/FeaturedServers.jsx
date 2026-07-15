@@ -1,50 +1,73 @@
 import { Link } from "react-router-dom";
 
-export default function FeaturedServers() {
+export default function FeaturedServers({ communities }) {
+  const featured = communities
+    .filter((community) => community.featured)
+    .sort((a, b) => b.totalPoints - a.totalPoints);
+
   return (
     <section className="container py-5">
-
       <div className="text-center mb-5">
+        <span className="hero-badge">Featured</span>
 
-        <span className="hero-badge">
-          Featured
-        </span>
-
-        <h2 className="section-title mt-3">
-          Featured Communities
-        </h2>
+        <h2 className="section-title mt-3">Featured Communities</h2>
 
         <p className="section-subtitle">
-          Discover and join the best Roblox communities.
+          Discover some of the best communities on Discover.
         </p>
-
       </div>
 
-      <div className="glass-card featured-empty text-center p-5">
+      {featured.length === 0 ? (
+        <div className="glass-card featured-empty text-center p-5">
+          <div className="featured-icon mb-4">🚀</div>
 
-        <div className="featured-icon mb-4">
-          🚀
+          <h3 className="fw-bold mb-3">Your Community Could Be Here</h3>
+
+          <p className="text-secondary mx-auto featured-text">
+            Featured communities will appear here once they're selected.
+          </p>
+
+          <Link
+            to="/advertise"
+            className="btn-discover text-decoration-none mt-4 d-inline-block"
+          >
+            Submit Community
+          </Link>
         </div>
+      ) : (
+        <div className="row g-4">
+          {featured.slice(0, 3).map((community) => (
+            <div className="col-lg-4" key={community.id}>
+              <div className="glass-card community-card h-100">
+                <img
+                  src={community.banner}
+                  className="community-banner"
+                  alt={community.name}
+                />
 
-        <h3 className="fw-bold mb-3">
-          Your Community Could Be Here
-        </h3>
+                <div className="p-4">
+                  <img
+                    src={community.logo}
+                    className="community-logo mb-3"
+                    alt={community.name}
+                  />
 
-        <p className="text-secondary mx-auto featured-text">
-          Featured communities will appear here once listings
-          begin getting approved. Submit your community today
-          and become one of the first communities on Discover.
-        </p>
+                  <h4>{community.name}</h4>
 
-        <Link
-          to="/advertise"
-          className="btn-discover text-decoration-none mt-4 d-inline-block"
-        >
-          Submit Community
-        </Link>
+                  <p className="text-secondary">{community.description}</p>
 
-      </div>
-
+                  <Link
+                    to={`/server/${community.id}`}
+                    className="btn-discover text-decoration-none"
+                  >
+                    View Community
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 }

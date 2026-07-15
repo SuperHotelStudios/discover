@@ -17,6 +17,9 @@ const communities = [
     featured: true,
     verified: true,
 
+    rating: 4.8,
+    reviews: 124,
+
     tags: [
       "Roleplay",
       "Emergency",
@@ -42,6 +45,9 @@ const communities = [
     featured: false,
     verified: true,
 
+    rating: 4.8,
+    reviews: 124,
+
     tags: [
       "Lua",
       "Development",
@@ -66,6 +72,9 @@ const communities = [
 
     featured: false,
     verified: false,
+
+    rating: 4.8,
+    reviews: 124,
 
     tags: [
       "GFX",

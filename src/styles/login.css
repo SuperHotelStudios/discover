@@ -1,0 +1,57 @@
+.login-page{
+    min-height:75vh;
+    display:flex;
+    margin-top: 6rem;
+    justify-content:center;
+    align-items:center;
+}
+
+.login-card{
+    width:430px;
+    background:#111827;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:22px;
+    padding:45px;
+    text-align:center;
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+.login-logo{
+    width:90px;
+    margin-bottom:20px;
+}
+
+.login-title{
+    font-size:32px;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+.login-subtitle{
+    color:#94a3b8;
+    margin-bottom:35px;
+}
+
+.discord-btn{
+    width:100%;
+    background:#5865F2;
+    color:white;
+    border:none;
+    border-radius:12px;
+    padding:16px;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.discord-btn:hover{
+    background:#4752C4;
+    transform:translateY(-2px);
+}
+
+.login-note{
+    margin-top:25px;
+    color:#64748b;
+    font-size:14px;
+}
