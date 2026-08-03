@@ -3,7 +3,7 @@ export const communitySchema = {
   invite: "",
   category: "",
   description: "",
-  ownerId: "",
+ createdById: "",
   featured: false,
   approved: false,
   createdAt: ""

@@ -109,6 +109,16 @@ export default function Navbar() {
                   📊 Creator Dashboard
                 </Link>
 
+                {(user?.role === "ADMIN" || user?.role === "OWNER") && (
+                  <>
+                    <hr className="dropdown-divider" />
+
+                    <Link to="/admin" className="dropdown-link">
+                      🛠 Admin Dashboard
+                    </Link>
+                  </>
+                )}
+
                 <button className="dropdown-item" disabled>
                   ⚙ Settings
                   <span>Coming Soon</span>

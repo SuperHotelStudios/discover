@@ -20,9 +20,13 @@ export function AuthProvider({ children }) {
         const data = await api("/auth/me");
         setUser(data);
       } catch (err) {
-        console.error(err);
-        localStorage.removeItem("token");
-        setUser(null);
+        console.error("Failed to load authenticated user:", err);
+
+        // Only remove the token if it is actually invalid
+        if (err.status === 401) {
+          localStorage.removeItem("token");
+          setUser(null);
+        }
       } finally {
         setLoading(false);
       }
@@ -41,6 +45,7 @@ export function AuthProvider({ children }) {
     <AuthContext.Provider
       value={{
         user,
+        setUser,
         loading,
         logout,
         isAuthenticated: !!user,

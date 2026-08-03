@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { api } from "../services/api";
+import { showSuccess, showError } from "../utils/toast";
 
 export default function MyCommunities() {
   const [communities, setCommunities] = useState([]);
@@ -38,9 +39,9 @@ export default function MyCommunities() {
       setShowDeleteModal(false);
       setSelectedCommunity(null);
 
-      alert(response.message);
+      showSuccess(response.message);
     } catch (err) {
-      alert(err.message);
+      showError(err.message);
     }
   }
 
@@ -77,9 +78,33 @@ export default function MyCommunities() {
               </div>
 
               <div className="col-md-6">
-                <h3>{community.name}</h3>
+                <h3 className="mb-2">
+                  {community.name}
+
+                  {community.verified && (
+                    <span className="verified-badge ms-2">✔ Verified</span>
+                  )}
+
+                  {community.featured && (
+                    <span className="featured-badge ms-2">⭐ Featured</span>
+                  )}
+
+                  {community.hidden && (
+                    <span className="badge bg-danger ms-2">🙈 Hidden</span>
+                  )}
+                </h3>
 
                 <p>{community.description}</p>
+
+                {community.hidden && (
+                  <div className="alert alert-warning py-2 mt-3">
+                    <strong>Hidden by Discover Staff</strong>
+
+                    <div>
+                      Your community is currently hidden from public users.
+                    </div>
+                  </div>
+                )}
 
                 <div className="text-secondary mt-2">
                   👥 {community.memberCount.toLocaleString()} Members
@@ -96,7 +121,7 @@ export default function MyCommunities() {
 
               <div className="col-md-4 text-end">
                 <Link
-                  to={`/servers/${community.id}`}
+                  to={`/server/${community.id}`}
                   className="btn-discover text-decoration-none me-2"
                 >
                   View

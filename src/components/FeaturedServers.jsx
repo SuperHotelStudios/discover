@@ -52,7 +52,17 @@ export default function FeaturedServers({ communities }) {
                     alt={community.name}
                   />
 
-                  <h4>{community.name}</h4>
+                  <h4 className="mb-2">
+                    {community.name}
+
+                    {community.verified && (
+                      <span className="verified-badge ms-2">✔ Verified</span>
+                    )}
+
+                    {community.featured && (
+                      <span className="featured-badge ms-2">⭐ Featured</span>
+                    )}
+                  </h4>
 
                   <p className="text-secondary">{community.description}</p>
 

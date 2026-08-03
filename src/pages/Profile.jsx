@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Navigate, Link } from "react-router-dom";
 import { api } from "../services/api";
 import { useAuth } from "../context/AuthContext";
+import MyCategoryRequests from "../components/profile/MyCategoryRequests";
+import MyReports from "../components/profile/MyReports";
 
 export default function Profile() {
   const { loading, isAuthenticated } = useAuth();
@@ -143,6 +145,10 @@ export default function Profile() {
               </div>
             </div>
           </div>
+
+          <MyCategoryRequests />
+
+          <MyReports />
 
           <div className="glass-card p-4 mt-4">
             <div className="d-flex justify-content-between align-items-center mb-4">

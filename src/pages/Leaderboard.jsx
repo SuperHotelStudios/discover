@@ -68,6 +68,10 @@ export default function Leaderboard() {
               <h4 className="fw-bold mb-1">
                 {community.name}
 
+                {community.verified && (
+                  <span className="verified-badge ms-2">✔ Verified</span>
+                )}
+
                 {community.featured && (
                   <span className="featured-badge ms-2">⭐ Featured</span>
                 )}
@@ -99,7 +103,7 @@ export default function Leaderboard() {
             </div>
 
             <Link
-              to={`/servers/${community.id}`}
+              to={`/server/${community.id}`}
               className="btn-discover text-decoration-none"
             >
               View

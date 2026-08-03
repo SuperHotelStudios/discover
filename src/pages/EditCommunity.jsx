@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { api } from "../services/api";
 import { useNavigate, useParams } from "react-router-dom";
+import { showError, showSuccess } from "../utils/toast";
 
 export default function EditCommunity() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [categories, setCategories] = useState([]);
 
   const [loading, setLoading] = useState(true);
 
@@ -17,39 +19,6 @@ export default function EditCommunity() {
     banner: "",
   });
 
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    async function loadCommunity() {
-      try {
-        const data = await api(`/communities/${id}`);
-
-        setFormData({
-          name: data.name,
-          inviteLink: data.inviteLink,
-          memberCount: data.memberCount,
-          category: data.category,
-          description: data.description,
-          banner: data.banner,
-        });
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    loadCommunity();
-  }, [id]);
-
-  const showToast = (text) => {
-    setMessage(text);
-
-    setTimeout(() => {
-      setMessage("");
-    }, 3000);
-  };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -57,17 +26,45 @@ export default function EditCommunity() {
       return;
     }
 
-    setFormData({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       [name]: value,
-    });
+    }));
   };
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const [communityData, categoryData] = await Promise.all([
+          api(`/communities/${id}`),
+          api("/categories"),
+        ]);
+
+        setFormData({
+          name: communityData.name,
+          inviteLink: communityData.inviteLink,
+          memberCount: communityData.memberCount,
+          category: communityData.category,
+          description: communityData.description,
+          banner: communityData.banner,
+        });
+
+        setCategories(categoryData);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadData();
+  }, [id]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!formData.banner.trim() || !formData.description.trim()) {
-      showToast("Please fill all required fields.");
+      showError("Please fill all required fields.");
       return;
     }
 
@@ -81,13 +78,13 @@ export default function EditCommunity() {
         }),
       });
 
-      showToast(response.message);
+      showSuccess(response.message);
 
       setTimeout(() => {
         navigate("/my-communities");
       }, 1500);
     } catch (err) {
-      showToast(err.message);
+      showError(err.message);
     }
   };
 
@@ -165,11 +162,18 @@ export default function EditCommunity() {
           <div className="mb-4">
             <label className="form-label">Category</label>
 
-            {categories.map((category) => (
-              <option key={category.id} value={category.name}>
-                {category.icon} {category.name}
-              </option>
-            ))}
+            <select
+              name="category"
+              value={formData.category}
+              onChange={handleChange}
+              className="form-select custom-input"
+            >
+              {categories.map((category) => (
+                <option key={category.id} value={category.name}>
+                  {category.icon} {category.name}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div className="mb-4">
@@ -243,8 +247,6 @@ export default function EditCommunity() {
           </div>
         </form>
       </div>
-
-      {message && <div className="toast-message">{message}</div>}
     </section>
   );
 }

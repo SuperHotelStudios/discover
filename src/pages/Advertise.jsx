@@ -3,6 +3,8 @@ import { api } from "../services/api";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { Navigate } from "react-router-dom";
+import RequestCategoryModal from "../components/RequestCategoryModal";
+import { showSuccess, showError } from "../utils/toast";
 
 export default function Advertise() {
   const [formData, setFormData] = useState({
@@ -11,11 +13,11 @@ export default function Advertise() {
     description: "",
     banner: "",
   });
+  const [showCategoryModal, setShowCategoryModal] = useState(false);
   const [categories, setCategories] = useState([]);
 
   const { isAuthenticated, loading } = useAuth();
   const [submitting, setSubmitting] = useState(false);
-  const [message, setMessage] = useState("");
 
   const navigate = useNavigate();
 
@@ -36,14 +38,6 @@ export default function Advertise() {
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
   }
-
-  const showToast = (text) => {
-    setMessage(text);
-
-    setTimeout(() => {
-      setMessage("");
-    }, 3000);
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -66,7 +60,7 @@ export default function Advertise() {
       !formData.description.trim() ||
       !formData.banner.trim()
     ) {
-      showToast("Please fill all required fields.");
+      showError("Please fill all required fields.");
       return;
     }
 
@@ -74,7 +68,7 @@ export default function Advertise() {
       /^https?:\/\/(www\.)?(discord\.gg|discord\.com\/invite)\/.+$/;
 
     if (!discordRegex.test(formData.inviteLink)) {
-      showToast("Please enter a valid Discord invite link.");
+      showError("Please enter a valid Discord invite link.");
       return;
     }
 
@@ -89,7 +83,7 @@ export default function Advertise() {
         }),
       });
 
-      showToast(response.message);
+      showSuccess(response.message);
 
       setFormData({
         inviteLink: "",
@@ -103,7 +97,7 @@ export default function Advertise() {
       }, 1500);
     } catch (err) {
       console.error(err);
-      showToast(err.message);
+      showError(err.message);
     }
   };
 
@@ -148,6 +142,18 @@ export default function Advertise() {
                 </option>
               ))}
             </select>
+            <div className="mt-2">
+              <button
+                type="button"
+                className="btn btn-link p-0 text-decoration-none text-slate-light"
+                onClick={() => setShowCategoryModal(true)}
+              >
+                Can't find your category?{" "}
+                <span className="text-decoration-underline text-slate-light">
+                  Request one
+                </span>
+              </button>
+            </div>
           </div>
 
           <div className="mb-4">
@@ -186,7 +192,10 @@ export default function Advertise() {
         </form>
       </div>
 
-      {message && <div className="toast-message">{message}</div>}
+      <RequestCategoryModal
+        show={showCategoryModal}
+        onClose={() => setShowCategoryModal(false)}
+      />
     </section>
   );
 }

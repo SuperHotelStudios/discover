@@ -14,6 +14,11 @@ import MyCommunities from "./pages/MyCommunities";
 import EditCommunity from "./pages/EditCommunity";
 import CreatorDashboard from "./pages/CreatorDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
+import MyCategoryRequests from "./pages/MyCategoryRequests";
+import AdminCategoryRequests from "./pages/AdminCategoryRequests";
+import AdminReports from "./pages/AdminReports";
+import MyReports from "./components/profile/MyReports";
+import AdminCommunities from "./pages/AdminCommunities";
 
 function App() {
   return (
@@ -35,6 +40,17 @@ function App() {
           <Route path="/communities/:id/edit" element={<EditCommunity />} />
           <Route path="/dashboard" element={<CreatorDashboard />} />
           <Route path="/admin" element={<AdminDashboard />} />
+          <Route
+            path="/my-category-requests"
+            element={<MyCategoryRequests />}
+          />
+          <Route
+            path="/admin/category-requests"
+            element={<AdminCategoryRequests />}
+          />
+          <Route path="/admin/reports" element={<AdminReports />} />
+          <Route path="/my-reports" element={<MyReports />} />
+          <Route path="/admin/communities" element={<AdminCommunities />} />
         </Routes>
 
         <Footer />

@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../services/api";
+import ReportModal from "../components/ReportModal";
 export default function ServerDetails() {
   const { id } = useParams();
 
@@ -23,6 +24,8 @@ export default function ServerDetails() {
 
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
+
+  const [showReportModal, setShowReportModal] = useState(false);
 
   useEffect(() => {
     async function loadCommunity() {
@@ -185,17 +188,7 @@ export default function ServerDetails() {
           />
 
           <div>
-            <h1 className="fw-bold mb-2">
-              {community.name}
-
-              {community.featured && (
-                <span className="featured-badge ms-3">⭐ Featured</span>
-              )}
-
-              {community.verified && (
-                <span className="verified-badge ms-2">✔ Verified</span>
-              )}
-            </h1>
+            {community.name}
 
             <p className="text-secondary mb-0">{community.description}</p>
           </div>
@@ -205,8 +198,8 @@ export default function ServerDetails() {
 
         <div className="row text-center g-4">
           <div className="col-md-3">
-            <h5>👤 Owner</h5>
-            <p>{community.owner?.displayName || "Unknown"}</p>
+            <h5>👤 Advertised By</h5>
+            <p>{community.createdBy?.displayName || "Unknown"}</p>
           </div>
 
           <div className="col-md-3">
@@ -370,6 +363,13 @@ export default function ServerDetails() {
               className={`bi ${isFavorited ? "bi-heart-fill" : "bi-heart"}`}
             ></i>
           </button>
+
+          <button
+            className="btn-discover"
+            onClick={() => setShowReportModal(true)}
+          >
+            Report
+          </button>
         </div>
 
         {showToast && (
@@ -378,6 +378,11 @@ export default function ServerDetails() {
             {toastMessage}
           </div>
         )}
+        <ReportModal
+          show={showReportModal}
+          onClose={() => setShowReportModal(false)}
+          communityId={community.id}
+        />
       </div>
     </section>
   );

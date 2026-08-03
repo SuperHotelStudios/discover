@@ -6,6 +6,11 @@
   --text:#f8fafc;
   --muted:#94a3b8;
   --border:rgba(255,255,255,.08);
+  --text-slate-light: #cbd5e1;
+}
+
+.text-slate-light {
+  color: var(--text-slate-light) !important;
 }
 
 html{
@@ -631,6 +636,46 @@ body::after{
   animation:toastSlide .3s ease;
 }
 
+.modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    z-index:9999;
+}
+
+.request-modal{
+
+    width:100%;
+    max-width:560px;
+
+    border-radius:22px;
+
+    padding:40px;
+}
+
+.modal-close{
+    position:absolute;
+    top:20px;
+    right:20px;
+
+    border:none;
+    background:none;
+
+    color:white;
+    font-size:1.3rem;
+
+    opacity:.7;
+}
+
+.modal-close:hover{
+    opacity:1;
+}
+
 @keyframes toastSlide{
   from{
     opacity:0;
@@ -1197,4 +1242,89 @@ body::after{
 
 .dashboard-stat-card p{
     font-size:.95rem;
+}
+
+/* Report Modal */
+.report-modal {
+  width: 100%;
+  max-width: 600px;
+}
+
+.modal-backdrop-custom {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(6px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 9999;
+
+  padding: 20px;
+}
+
+/* Admin Reports */
+.report-tabs {
+    display: inline-flex;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 14px;
+    padding: 6px;
+    gap: 6px;
+}
+
+.report-tabs button {
+    background: transparent;
+    border: none;
+    color: #cfcfcf;
+    padding: 10px 22px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: .25s;
+}
+
+.report-tabs button:hover {
+    color: white;
+}
+
+.report-tabs button.active {
+    background: linear-gradient(135deg,#6d5efc,#8b5cf6);
+    color: white;
+    box-shadow: 0 10px 25px rgba(108,92,231,.35);
+}
+
+/* Extra Features */
+.verified-badge {
+  display: inline-block;
+  background: rgba(66, 133, 244, 0.15);
+  color: #4da3ff;
+  border: 1px solid rgba(77, 163, 255, 0.4);
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.featured-badge {
+  display: inline-block;
+  background: rgba(255, 193, 7, 0.15);
+  color: #ffc107;
+  border: 1px solid rgba(255, 193, 7, 0.35);
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Toast */
+.toast-success{
+  background:#1e293b;
+  color:#fff;
+}
+
+.toast-error{
+  background:#842029;
+  color:#fff;
 }
