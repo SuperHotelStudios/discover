@@ -14,7 +14,11 @@ export default function DeleteCommunityModal({
   if (!show) return null;
 
   async function deleteCommunity() {
-    showError("Please provide a reason for deleting this community.");
+    if (!reason.trim()) {
+      showError("Please provide a reason for deleting this community.");
+      return;
+    }
+
     try {
       setLoading(true);
 

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { api } from "../services/api";
+import { showError, showSuccess } from "../utils/toast";
 
 export default function RequestCategoryModal({ show, onClose }) {
   const [form, setForm] = useState({
@@ -22,7 +23,7 @@ export default function RequestCategoryModal({ show, onClose }) {
         body: JSON.stringify(form),
       });
 
-      alert(res.message);
+      showSuccess(res.message);
 
       setForm({
         name: "",
@@ -31,7 +32,7 @@ export default function RequestCategoryModal({ show, onClose }) {
 
       onClose();
     } catch (err) {
-      alert(err.message);
+      showError(err.message);
     } finally {
       setLoading(false);
     }

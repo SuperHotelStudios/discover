@@ -19,6 +19,7 @@ import AdminCategoryRequests from "./pages/AdminCategoryRequests";
 import AdminReports from "./pages/AdminReports";
 import MyReports from "./components/profile/MyReports";
 import AdminCommunities from "./pages/AdminCommunities";
+import AdminUsers from "./pages/AdminUsers";
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
           <Route path="/admin/reports" element={<AdminReports />} />
           <Route path="/my-reports" element={<MyReports />} />
           <Route path="/admin/communities" element={<AdminCommunities />} />
+          <Route path="/admin/users" element={<AdminUsers />} />
         </Routes>
 
         <Footer />

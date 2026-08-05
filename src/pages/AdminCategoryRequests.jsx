@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { api } from "../services/api";
 import { useAuth } from "../context/AuthContext";
+import { showError, showSuccess } from "../utils/toast";
 
 export default function AdminCategoryRequests() {
   const { loading, isAuthenticated, user } = useAuth();
@@ -32,13 +33,14 @@ export default function AdminCategoryRequests() {
     }
 
     try {
-      await api(`/category-requests/${id}/approve`, {
+      const response = await api(`/category-requests/${id}/approve`, {
         method: "PATCH",
       });
 
+      showSuccess(response.message);
       loadRequests();
     } catch (err) {
-      alert(err.message);
+      showError(err.message);
     }
   }
 
@@ -48,16 +50,17 @@ export default function AdminCategoryRequests() {
     if (!reason) return;
 
     try {
-      await api(`/category-requests/${id}/reject`, {
+      const response = await api(`/category-requests/${id}/reject`, {
         method: "PATCH",
         body: JSON.stringify({
           reason,
         }),
       });
 
+      showSuccess(response.message);
       loadRequests();
     } catch (err) {
-      alert(err.message);
+      showError(err.message);
     }
   }
 

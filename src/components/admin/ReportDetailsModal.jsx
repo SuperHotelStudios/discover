@@ -116,26 +116,33 @@ export default function ReportDetailsModal({ show, onClose, report, refresh }) {
             placeholder="Write a note for the user..."
             value={note}
             onChange={(e) => setNote(e.target.value)}
+            readOnly={report.status !== "PENDING"}
           />
         </div>
 
-        <div className="d-flex justify-content-end gap-2">
-          <button
-            className="btn btn-danger"
-            disabled={loading}
-            onClick={() => reviewReport("reject")}
-          >
-            Reject
-          </button>
+        {report.status === "PENDING" ? (
+          <div className="d-flex justify-content-end gap-2">
+            <button
+              className="btn btn-danger"
+              disabled={loading}
+              onClick={() => reviewReport("reject")}
+            >
+              Reject
+            </button>
 
-          <button
-            className="btn btn-success"
-            disabled={loading}
-            onClick={() => reviewReport("resolve")}
-          >
-            Resolve
-          </button>
-        </div>
+            <button
+              className="btn btn-success"
+              disabled={loading}
+              onClick={() => reviewReport("resolve")}
+            >
+              Resolve
+            </button>
+          </div>
+        ) : (
+          <p className="text-secondary mb-0 text-end">
+            This report has already been {report.status.toLowerCase()}.
+          </p>
+        )}
       </div>
     </div>
   );

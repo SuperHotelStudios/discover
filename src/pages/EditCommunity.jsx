@@ -78,7 +78,7 @@ export default function EditCommunity() {
         }),
       });
 
-      showSuccess(response.message);
+      showSuccess(response.message || "Community updated successfully.");
 
       setTimeout(() => {
         navigate("/my-communities");
