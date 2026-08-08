@@ -91,7 +91,7 @@ export default function CreatorDashboard() {
       {/* Top Communities + Reviews */}
 
       <div className="row g-4 mb-5">
-        <div className="col-lg-6">
+        <div className="col-12 col-lg-6">
           <div className="glass-card p-4 h-100">
             <h3 className="mb-4">🏆 Top Performing Communities</h3>
 
@@ -159,7 +159,7 @@ export default function CreatorDashboard() {
 
         {/* Latest Reviews */}
 
-        <div className="col-lg-6">
+        <div className="col-12 col-lg-6">
           <div className="glass-card p-4 h-100">
             <h3 className="mb-4">⭐ Latest Reviews</h3>
 
@@ -205,14 +205,14 @@ export default function CreatorDashboard() {
       {/* Charts */}
 
       <div className="row g-4">
-        <div className="col-lg-6">
+        <div className="col-12 col-lg-6">
           <AnalyticsChart
             title="Views (Last 30 Days)"
             data={dashboard.viewsChart}
           />
         </div>
 
-        <div className="col-lg-6">
+        <div className="col-12 col-lg-6">
           <AnalyticsChart
             title="Invite Clicks (Last 30 Days)"
             data={dashboard.clicksChart}

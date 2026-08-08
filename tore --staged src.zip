@@ -1,0 +1,30 @@
+warning: in the working copy of 'src/App.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/pages/AdminUsers.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/pages/EditCommunity.jsx', LF will be replaced by CRLF the next time Git touches it
+ src/App.jsx                                      |   2 [32m+[m[31m-[m
+ src/components/Categories.jsx                    |  30 [32m+[m[31m-[m
+ src/components/FeaturedServers.jsx               |  22 [32m+[m[31m-[m
+ src/components/Footer.jsx                        |  86 [32m+[m[31m---[m
+ src/components/Hero.jsx                          |  14 [32m+[m[31m-[m
+ src/components/Navbar.jsx                        |  90 [32m+++[m[31m-[m
+ src/components/Stats.jsx                         |  52 [32m++[m[31m-[m
+ src/components/admin/CommunityModerationCard.jsx |  15 [32m+[m[31m-[m
+ src/components/admin/ReportCard.jsx              |  17 [32m+[m[31m-[m
+ src/components/dashboard/StatCard.jsx            |   2 [32m+[m[31m-[m
+ src/components/profile/MyCategoryRequests.jsx    |   6 [32m+[m[31m-[m
+ src/components/profile/MyReports.jsx             |  46 [32m+[m[31m-[m
+ src/pages/AdminDashboard.jsx                     |  50 [32m++[m[31m-[m
+ src/pages/AdminReports.jsx                       |   2 [32m+[m[31m-[m
+ src/pages/AdminUsers.jsx                         |   6 [32m+[m[31m-[m
+ src/pages/Advertise.jsx                          |   6 [32m+[m[31m-[m
+ src/pages/Blog.jsx                               |   2 [32m+[m[31m-[m
+ src/pages/CreatorDashboard.jsx                   |   8 [32m+[m[31m-[m
+ src/pages/EditCommunity.jsx                      |  10 [32m+[m[31m-[m
+ src/pages/Leaderboard.jsx                        | 119 [32m+++[m[31m--[m
+ src/pages/MyCommunities.jsx                      |  60 [32m+[m[31m--[m
+ src/pages/Profile.jsx                            |  48 [32m+[m[31m-[m
+ src/pages/ServerDetails.jsx                      |  46 [32m+[m[31m-[m
+ src/pages/Servers.jsx                            |  18 [32m+[m[31m-[m
+ src/styles/login.css                             |  24 [32m+[m[31m-[m
+ src/styles/theme.css                             | 542 [32m++++++++++++++++++++[m[31m---[m
+ 26 files changed, 881 insertions(+), 442 deletions(-)

@@ -6,8 +6,8 @@ export default function FeaturedServers({ communities }) {
     .sort((a, b) => b.totalPoints - a.totalPoints);
 
   return (
-    <section className="container py-5">
-      <div className="text-center mb-5">
+    <section className="container py-4 py-md-5">
+      <div className="text-center mb-4 mb-md-5">
         <span className="hero-badge">Featured</span>
 
         <h2 className="section-title mt-3">Featured Communities</h2>
@@ -18,7 +18,7 @@ export default function FeaturedServers({ communities }) {
       </div>
 
       {featured.length === 0 ? (
-        <div className="glass-card featured-empty text-center p-5">
+        <div className="glass-card featured-empty text-center p-4 p-sm-5">
           <div className="featured-icon mb-4">🚀</div>
 
           <h3 className="fw-bold mb-3">Your Community Could Be Here</h3>
@@ -35,9 +35,9 @@ export default function FeaturedServers({ communities }) {
           </Link>
         </div>
       ) : (
-        <div className="row g-4">
+        <div className="row g-3 g-md-4">
           {featured.slice(0, 3).map((community) => (
-            <div className="col-lg-4" key={community.id}>
+            <div className="col-12 col-sm-6 col-lg-4" key={community.id}>
               <div className="glass-card community-card h-100">
                 <img
                   src={community.banner}
@@ -45,30 +45,30 @@ export default function FeaturedServers({ communities }) {
                   alt={community.name}
                 />
 
-                <div className="p-4">
+                <div className="p-3 p-sm-4 d-flex flex-column flex-grow-1">
                   <img
                     src={community.logo}
                     className="community-logo mb-3"
                     alt={community.name}
                   />
 
-                  <h4 className="mb-2">
+                  <h4 className="mb-2 d-flex flex-wrap align-items-center gap-1">
                     {community.name}
 
                     {community.verified && (
-                      <span className="verified-badge ms-2">✔ Verified</span>
+                      <span className="verified-badge">✔ Verified</span>
                     )}
 
                     {community.featured && (
-                      <span className="featured-badge ms-2">⭐ Featured</span>
+                      <span className="featured-badge">⭐ Featured</span>
                     )}
                   </h4>
 
-                  <p className="text-secondary">{community.description}</p>
+                  <p className="text-secondary flex-grow-1">{community.description}</p>
 
                   <Link
                     to={`/server/${community.id}`}
-                    className="btn-discover text-decoration-none"
+                    className="btn-discover text-decoration-none text-center mt-3"
                   >
                     View Community
                   </Link>

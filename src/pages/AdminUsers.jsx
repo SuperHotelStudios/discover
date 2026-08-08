@@ -103,7 +103,7 @@ export default function AdminUsers() {
 
   return (
     <section className="container profile-page">
-      <div className="glass-card p-5">
+      <div className="glass-card p-3 p-sm-4 p-md-5">
         <div className="d-flex justify-content-between align-items-center gap-3 flex-wrap mb-4">
           <div>
             <h1 className="mb-1">User Management</h1>
@@ -117,7 +117,7 @@ export default function AdminUsers() {
         </div>
 
         <form
-          className="d-flex gap-2 mb-4"
+          className="d-flex flex-column flex-sm-row gap-2 mb-4"
           onSubmit={(event) => {
             event.preventDefault();
             loadUsers(search);
@@ -129,7 +129,7 @@ export default function AdminUsers() {
             onChange={(event) => setSearch(event.target.value)}
             placeholder="Search username, display name, or Discord ID"
           />
-          <button className="btn-discover" type="submit">
+          <button className="btn-discover w-100 w-sm-auto" type="submit">
             Search
           </button>
         </form>

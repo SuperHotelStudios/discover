@@ -4,16 +4,36 @@
     margin-top: 6rem;
     justify-content:center;
     align-items:center;
+    padding: 1rem;
 }
 
 .login-card{
-    width:430px;
+    width:100%;
+    max-width:430px;
     background:#111827;
     border:1px solid rgba(255,255,255,.08);
     border-radius:22px;
-    padding:45px;
+    padding:35px 24px;
     text-align:center;
     box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+@media (max-width: 480px) {
+  .login-page {
+    margin-top: 5rem;
+    min-height: calc(100vh - 5rem);
+    align-items: flex-start;
+    padding-top: 2rem;
+  }
+
+  .login-card {
+    padding: 28px 18px;
+    border-radius: 18px;
+  }
+
+  .login-title {
+    font-size: 24px;
+  }
 }
 
 .login-logo{

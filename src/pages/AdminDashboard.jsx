@@ -35,7 +35,7 @@ export default function AdminDashboard() {
     <section className="container profile-page">
       {/* HEADER */}
 
-      <div className="glass-card profile-header p-5 mb-4 text-center">
+      <div className="glass-card profile-header p-4 p-sm-5 mb-4 text-center">
         <h1 className="fw-bold mb-3">🛠 Discover Control Center</h1>
 
         <p className="text-secondary mb-0">
@@ -46,7 +46,7 @@ export default function AdminDashboard() {
       <div className="row g-4 mt-2">
         {/* LEFT */}
 
-        <div className="col-lg-4">
+        <div className="col-12 col-lg-4">
           <div className="glass-card p-4 h-100">
             <h3 className="mb-4">Administrator</h3>
 
@@ -80,7 +80,7 @@ export default function AdminDashboard() {
 
         {/* RIGHT */}
 
-        <div className="col-lg-8">
+        <div className="col-12 col-lg-8">
           {/* Statistics */}
 
           <div className="glass-card p-4">
@@ -126,30 +126,33 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        <div className="glass-card p-4 mt-4">
-          <h3 className="mb-4">🚨 Pending Actions</h3>
+        <div className="col-12">
+          <div className="glass-card p-3 p-sm-4 mt-4">
+            <h3 className="mb-4">🚨 Pending Actions</h3>
 
-          <div className="glass-card p-3 mb-3 d-flex justify-content-between align-items-center">
-            <div>
-              <h5>🚩 Reports</h5>
+            <div className="glass-card p-3 d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3">
+              <div>
+                <h5>🚩 Reports</h5>
 
-              <div className="text-secondary">Review community reports</div>
+                <div className="text-secondary">Review community reports</div>
+              </div>
+
+              <Link
+                to="/admin/reports"
+                className="btn-discover text-decoration-none text-center w-100 w-sm-auto"
+              >
+                Manage →
+              </Link>
             </div>
-
-            <Link
-              to="/admin/reports"
-              className="btn-discover text-decoration-none"
-            >
-              Manage →
-            </Link>
           </div>
         </div>
 
-        <div className="glass-card p-4 mt-4">
-          <h3 className="mb-4">Administration</h3>
+        <div className="col-12">
+          <div className="glass-card p-3 p-sm-4 mt-4">
+            <h3 className="mb-4">Administration</h3>
 
-          <div className="row g-3">
-            <div className="col-md-3">
+            <div className="row g-3">
+              <div className="col-6 col-md-3">
               <Link
                 to="/admin/categories"
                 className="analytics-card text-center text-decoration-none d-block p-4"
@@ -160,7 +163,7 @@ export default function AdminDashboard() {
               </Link>
             </div>
 
-            <div className="col-md-3">
+            <div className="col-6 col-md-3">
               <Link
                 to="/admin/reports"
                 className="analytics-card text-center text-decoration-none d-block p-4"
@@ -171,7 +174,7 @@ export default function AdminDashboard() {
               </Link>
             </div>
 
-            <div className="col-md-3">
+            <div className="col-6 col-md-3">
               <Link
                 to="/admin/users"
                 className="analytics-card text-center text-decoration-none d-block p-4"
@@ -182,7 +185,7 @@ export default function AdminDashboard() {
               </Link>
             </div>
 
-            <div className="col-md-3">
+            <div className="col-6 col-md-3">
               <Link
                 to="/admin/communities"
                 className="analytics-card text-center text-decoration-none d-block p-4"
@@ -191,6 +194,7 @@ export default function AdminDashboard() {
 
                 <h5 className="mt-3">Communities</h5>
               </Link>
+            </div>
             </div>
           </div>
         </div>

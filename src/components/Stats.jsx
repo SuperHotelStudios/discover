@@ -1,33 +1,39 @@
 export default function Stats() {
   return (
-    <section className="mt-40">
-      <div className="max-w-5xl mx-auto grid grid-cols-3 gap-8">
+    <section className="container my-5">
+      <div className="row g-3 g-md-4 justify-content-center">
 
-        <div className="bg-white/5 backdrop-blur-md p-8 rounded-2xl text-center">
-          <h2 className="text-5xl font-bold text-indigo-400">
-            500+
-          </h2>
-          <p className="text-gray-400 mt-2">
-            Servers
-          </p>
+        <div className="col-12 col-sm-4">
+          <div className="glass-card p-4 text-center">
+            <h2 className="display-5 fw-bold stat-value stat-indigo">
+              500+
+            </h2>
+            <p className="text-secondary mt-2 mb-0">
+              Servers
+            </p>
+          </div>
         </div>
 
-        <div className="bg-white/5 backdrop-blur-md p-8 rounded-2xl text-center">
-          <h2 className="text-5xl font-bold text-purple-400">
-            25K+
-          </h2>
-          <p className="text-gray-400 mt-2">
-            Members
-          </p>
+        <div className="col-12 col-sm-4">
+          <div className="glass-card p-4 text-center">
+            <h2 className="display-5 fw-bold stat-value stat-purple">
+              25K+
+            </h2>
+            <p className="text-secondary mt-2 mb-0">
+              Members
+            </p>
+          </div>
         </div>
 
-        <div className="bg-white/5 backdrop-blur-md p-8 rounded-2xl text-center">
-          <h2 className="text-5xl font-bold text-cyan-400">
-            100+
-          </h2>
-          <p className="text-gray-400 mt-2">
-            Advertisements
-          </p>
+        <div className="col-12 col-sm-4">
+          <div className="glass-card p-4 text-center">
+            <h2 className="display-5 fw-bold stat-value stat-cyan">
+              100+
+            </h2>
+            <p className="text-secondary mt-2 mb-0">
+              Advertisements
+            </p>
+          </div>
         </div>
 
       </div>

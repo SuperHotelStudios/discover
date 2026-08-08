@@ -19,18 +19,13 @@ export default function ReportCard({ report, refresh }) {
 
   return (
     <>
-      <div className="glass-card p-4 mb-4">
-        <div className="d-flex justify-content-between align-items-center">
-          <div className="d-flex align-items-center gap-3">
+      <div className="glass-card p-3 p-sm-4 mb-4">
+        <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3">
+          <div className="d-flex align-items-start align-items-sm-center gap-3 w-100">
             <img
               src={report.community.logo}
               alt={report.community.name}
-              className="details-logo"
-              style={{
-                width: "70px",
-                height: "70px",
-                objectFit: "cover",
-              }}
+              className="details-logo flex-shrink-0"
             />
 
             <div>
@@ -56,11 +51,11 @@ export default function ReportCard({ report, refresh }) {
             </div>
           </div>
 
-          <div className="text-end">
+          <div className="text-start text-md-end w-100 w-md-auto">
             <div className="mb-3">{getBadge(report.status)}</div>
 
             <button
-              className="btn-discover"
+              className="btn-discover w-100 w-md-auto"
               onClick={() => setShowDetails(true)}
             >
               View Details →

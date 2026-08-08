@@ -103,8 +103,8 @@ export default function EditCommunity() {
         </p>
       </div>
 
-      <div className="glass-card advertise-form p-5">
-        <div className="glass-card p-3 mb-5 text-center">
+      <div className="glass-card advertise-form p-3 p-sm-4 p-md-5">
+        <div className="glass-card p-3 mb-4 mb-md-5 text-center">
           <strong>💡 Tip</strong>
 
           <div className="text-secondary mt-2">
@@ -232,16 +232,16 @@ export default function EditCommunity() {
             </div>
           </div>
 
-          <div className="d-flex gap-3">
+          <div className="d-flex flex-column flex-sm-row gap-3">
             <button
               type="button"
-              className="btn btn-secondary"
+              className="btn btn-secondary w-100 w-sm-auto"
               onClick={() => navigate("/my-communities")}
             >
               Cancel
             </button>
 
-            <button type="submit" className="btn-discover">
+            <button type="submit" className="btn-discover w-100 w-sm-auto">
               Save Changes
             </button>
           </div>

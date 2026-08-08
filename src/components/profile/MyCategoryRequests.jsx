@@ -36,7 +36,7 @@ export default function MyCategoryRequests() {
 
   return (
     <div className="glass-card p-4 mt-4">
-      <div className="d-flex justify-content-between align-items-center mb-4">
+      <div className="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-2 mb-4">
         <h3>⭐ My Category Requests</h3>
 
         <Link to="/my-category-requests" className="text-decoration-none">
@@ -53,7 +53,7 @@ export default function MyCategoryRequests() {
       ) : (
         requests.slice(0, 3).map((request) => (
           <div key={request.id} className="glass-card p-3 mb-3">
-            <div className="d-flex justify-content-between align-items-center">
+            <div className="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-2">
               <div>
                 <h5 className="mb-1">
                   {request.icon} {request.name}
@@ -71,7 +71,7 @@ export default function MyCategoryRequests() {
                 )}
               </div>
 
-              {getBadge(request.status)}
+              <div>{getBadge(request.status)}</div>
             </div>
           </div>
         ))

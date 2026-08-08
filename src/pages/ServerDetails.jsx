@@ -179,8 +179,8 @@ export default function ServerDetails() {
 
   return (
     <section className="container server-details-page">
-      <div className="p-5">
-        <div className="d-flex align-items-center gap-4 flex-wrap">
+      <div className="p-3 p-sm-4 p-md-5">
+        <div className="d-flex align-items-center gap-3 gap-md-4 flex-wrap">
           <img
             src={community.logo || "https://placehold.co/100x100?text=Logo"}
             alt={community.name}
@@ -188,7 +188,7 @@ export default function ServerDetails() {
           />
 
           <div>
-            {community.name}
+            <h2 className="fw-bold mb-1">{community.name}</h2>
 
             <p className="text-secondary mb-0">{community.description}</p>
           </div>
@@ -196,30 +196,30 @@ export default function ServerDetails() {
 
         <hr />
 
-        <div className="row text-center g-4">
-          <div className="col-md-3">
+        <div className="row text-center g-3 g-md-4">
+          <div className="col-6 col-sm-3">
             <h5>👤 Advertised By</h5>
-            <p>{community.createdBy?.displayName || "Unknown"}</p>
+            <p className="mb-0">{community.createdBy?.displayName || "Unknown"}</p>
           </div>
 
-          <div className="col-md-3">
+          <div className="col-6 col-sm-3">
             <h5>🎭 Category</h5>
-            <p>{community.category}</p>
+            <p className="mb-0">{community.category}</p>
           </div>
 
-          <div className="col-md-3">
+          <div className="col-6 col-sm-3">
             <h5>👥 Members</h5>
-            <p>{community.memberCount.toLocaleString()}</p>
+            <p className="mb-0">{community.memberCount.toLocaleString()}</p>
           </div>
 
-          <div className="col-md-3">
+          <div className="col-6 col-sm-3">
             <h5>🏆 Points</h5>
-            <p>{(community.totalPoints ?? 0).toLocaleString()}</p>
+            <p className="mb-0">{(community.totalPoints ?? 0).toLocaleString()}</p>
           </div>
 
           <hr />
 
-          <div className="rating-section text-center my-4">
+          <div className="rating-section text-center my-4 col-12">
             <h4 className="fw-bold mb-3">Rate this Community</h4>
 
             <div className="community-stars">
@@ -262,7 +262,7 @@ export default function ServerDetails() {
               <p className="text-secondary">No reviews yet.</p>
             ) : (
               communityReviews.map((review) => (
-                <div key={review.id} className="glass-card p-3 mb-3">
+                <div key={review.id} className="glass-card p-3 mb-3 text-start">
                   <h5>{review.reviewer.displayName}</h5>
 
                   <div className="text-warning mb-2">
@@ -270,7 +270,7 @@ export default function ServerDetails() {
                     {"☆".repeat(5 - review.rating)}
                   </div>
 
-                  {review.comment && <p>{review.comment}</p>}
+                  {review.comment && <p className="mb-1">{review.comment}</p>}
 
                   <small className="text-secondary">
                     {new Date(review.createdAt).toLocaleDateString()}
@@ -281,14 +281,14 @@ export default function ServerDetails() {
 
             <hr />
           </div>
-          <div className="glass-card p-4 mb-5">
+          <div className="glass-card p-3 p-sm-4 mb-5 col-12">
             <h3 className="mb-4 text-center">
               <i className="bi bi-graph-up-arrow me-2"></i>
               Community Analytics
             </h3>
 
-            <div className="row text-center g-4">
-              <div className="col-md-3">
+            <div className="row text-center g-3 g-md-4">
+              <div className="col-6 col-sm-4 col-md">
                 <div className="analytics-card">
                   <i className="bi bi-eye analytics-icon"></i>
 
@@ -298,7 +298,7 @@ export default function ServerDetails() {
                 </div>
               </div>
 
-              <div className="col-md">
+              <div className="col-6 col-sm-4 col-md">
                 <div className="analytics-card">
                   <i className="bi bi-box-arrow-up-right analytics-icon"></i>
 
@@ -308,7 +308,7 @@ export default function ServerDetails() {
                 </div>
               </div>
 
-              <div className="col-md">
+              <div className="col-6 col-sm-4 col-md">
                 <div className="analytics-card">
                   <i
                     className="bi bi-heart-fill analytics-icon"
@@ -321,7 +321,7 @@ export default function ServerDetails() {
                 </div>
               </div>
 
-              <div className="col-md">
+              <div className="col-6 col-sm-4 col-md">
                 <div className="analytics-card">
                   <i className="bi bi-star-fill analytics-icon"></i>
 
@@ -331,7 +331,7 @@ export default function ServerDetails() {
                 </div>
               </div>
 
-              <div className="col-md">
+              <div className="col-6 col-sm-4 col-md">
                 <div className="analytics-card">
                   <i className="bi bi-chat-left-text analytics-icon"></i>
 
@@ -344,7 +344,7 @@ export default function ServerDetails() {
           </div>
         </div>
 
-        <div className="text-center mt-5 d-flex justify-content-center gap-3 flex-wrap">
+        <div className="text-center mt-4 mt-md-5 d-flex justify-content-center gap-2 gap-sm-3 flex-wrap">
           <button onClick={handleJoin} className="btn-discover">
             <i className="bi bi-discord me-2"></i>
             Join Community

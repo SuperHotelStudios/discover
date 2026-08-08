@@ -34,7 +34,7 @@ export default function AdminReports() {
 
   return (
     <section className="container profile-page">
-      <div className="glass-card profile-header p-5 mb-4 text-center">
+      <div className="glass-card profile-header p-4 p-sm-5 mb-4 text-center">
         <h1>Report Management</h1>
 
         <p className="text-secondary mb-0">

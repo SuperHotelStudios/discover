@@ -67,17 +67,17 @@ export default function MyCommunities() {
         </div>
       ) : (
         communities.map((community) => (
-          <div key={community.id} className="glass-card p-4 mb-4">
-            <div className="row align-items-center">
-              <div className="col-md-2 text-center">
+          <div key={community.id} className="glass-card p-3 p-sm-4 mb-4">
+            <div className="row align-items-center g-3 g-md-4">
+              <div className="col-12 col-md-2 text-center">
                 <img
                   src={community.logo}
-                  className="details-logo"
+                  className="details-logo mx-auto"
                   alt={community.name}
                 />
               </div>
 
-              <div className="col-md-6">
+              <div className="col-12 col-md-6">
                 <h3 className="mb-2">
                   {community.name}
 
@@ -119,30 +119,32 @@ export default function MyCommunities() {
                 </div>
               </div>
 
-              <div className="col-md-4 text-end">
-                <Link
-                  to={`/server/${community.id}`}
-                  className="btn-discover text-decoration-none me-2"
-                >
-                  View
-                </Link>
+              <div className="col-12 col-md-4">
+                <div className="d-flex flex-column flex-sm-row flex-md-column flex-lg-row gap-2 justify-content-md-end">
+                  <Link
+                    to={`/server/${community.id}`}
+                    className="btn-discover text-decoration-none text-center"
+                  >
+                    View
+                  </Link>
 
-                <Link
-                  to={`/communities/${community.id}/edit`}
-                  className="btn-discover text-decoration-none me-2"
-                >
-                  Edit
-                </Link>
+                  <Link
+                    to={`/communities/${community.id}/edit`}
+                    className="btn-discover text-decoration-none text-center"
+                  >
+                    Edit
+                  </Link>
 
-                <button
-                  className="btn btn-danger"
-                  onClick={() => {
-                    setSelectedCommunity(community);
-                    setShowDeleteModal(true);
-                  }}
-                >
-                  Delete
-                </button>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => {
+                      setSelectedCommunity(community);
+                      setShowDeleteModal(true);
+                    }}
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
             </div>
           </div>

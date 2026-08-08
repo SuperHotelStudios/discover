@@ -40,7 +40,7 @@ export default function Blog() {
 
       <div className="row g-4">
         {posts.map((post) => (
-          <div className="col-lg-4" key={post.id}>
+          <div className="col-12 col-md-6 col-lg-4" key={post.id}>
             <div className="glass-card blog-card h-100 p-4">
               <span className="community-tag">{post.category}</span>
 

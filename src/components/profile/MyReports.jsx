@@ -35,8 +35,8 @@ export default function MyReports() {
   }
 
   return (
-    <div className="glass-card p-4" style={{ marginTop: "120px" }}>
-      <div className="d-flex justify-content-between align-items-center mb-4">
+    <div className="glass-card p-4 mt-4">
+      <div className="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-2 mb-4">
         <h3>🚩 My Reports</h3>
 
         <Link to="/my-reports" className="text-decoration-none">
@@ -52,50 +52,18 @@ export default function MyReports() {
         </p>
       ) : (
         reports.slice(0, 3).map((report) => (
-          // <div key={report.id} className="glass-card p-3 mb-3">
-          //   <div className="d-flex justify-content-between align-items-center">
-          //     <div>
-          //       <h5 className="mb-1">🚩 {report.community.name}</h5>
-
-          //       <small className="text-secondary d-block">
-          //         Reason: {report.reason}
-          //       </small>
-
-          //       <small className="text-secondary">
-          //         Reported on {new Date(report.createdAt).toLocaleDateString()}
-          //       </small>
-
-          //       {report.description && (
-          //         <div className="mt-2">{report.description}</div>
-          //       )}
-
-          //       {report.status !== "PENDING" && report.adminNote && (
-          //         <div className="mt-2">
-          //           <strong>Admin Note:</strong> {report.adminNote}
-          //         </div>
-          //       )}
-
-          //       {report.status !== "PENDING" && report.reviewedBy && (
-          //         <div className="text-secondary mt-1">
-          //           Reviewed by <strong>{report.reviewedBy.displayName}</strong>
-          //         </div>
-          //       )}
-          //     </div>
-
-          //     {getBadge(report.status)}
-          //   </div>
-          // </div>
           <div key={report.id} className="glass-card p-3 mb-3">
-            <div className="d-flex align-items-center justify-content-between">
+            <div className="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-3">
               <div className="d-flex align-items-center gap-3">
                 <img
                   src={report.community.logo}
                   className="details-logo"
                   alt={report.community.name}
                   style={{
-                    width: "60px",
-                    height: "60px",
+                    width: "50px",
+                    height: "50px",
                     objectFit: "cover",
+                    borderRadius: "12px"
                   }}
                 />
 
@@ -120,7 +88,7 @@ export default function MyReports() {
                 </div>
               </div>
 
-              <div className="text-end">
+              <div className="text-sm-end">
                 {getBadge(report.status)}
 
                 {report.reviewedBy && (

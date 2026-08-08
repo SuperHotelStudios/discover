@@ -112,7 +112,7 @@ export default function Advertise() {
         </p>
       </div>
 
-      <div className="glass-card advertise-form p-5">
+      <div className="glass-card advertise-form p-3 p-sm-4 p-md-5">
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="form-label">Discord Invite</label>
@@ -145,7 +145,7 @@ export default function Advertise() {
             <div className="mt-2">
               <button
                 type="button"
-                className="btn btn-link p-0 text-decoration-none text-slate-light"
+                className="btn btn-link p-0 text-decoration-none text-slate-light text-start"
                 onClick={() => setShowCategoryModal(true)}
               >
                 Can't find your category?{" "}
@@ -186,7 +186,7 @@ export default function Advertise() {
             </div>
           </div>
 
-          <button type="submit" className="btn-discover">
+          <button type="submit" className="btn-discover w-100 w-sm-auto">
             Advertise Community
           </button>
         </form>

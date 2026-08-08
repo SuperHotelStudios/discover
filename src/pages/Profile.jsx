@@ -44,7 +44,7 @@ export default function Profile() {
 
   return (
     <section className="container profile-page">
-      <div className="glass-card profile-header p-5">
+      <div className="glass-card profile-header p-4 p-sm-5">
         <div className="text-center">
           <img
             src={
@@ -56,7 +56,7 @@ export default function Profile() {
             className="profile-avatar"
           />
 
-          <h1 className="mt-4 fw-bold">{profile.displayName}</h1>
+          <h1 className="mt-3 mt-md-4 fw-bold fs-2">{profile.displayName}</h1>
 
           <div className="profile-username">@{profile.username}</div>
 
@@ -69,14 +69,14 @@ export default function Profile() {
       </div>
 
       <div className="row g-4 mt-2">
-        <div className="col-lg-4">
+        <div className="col-12 col-lg-4">
           <div className="glass-card p-4 h-100">
             <h3 className="mb-4">Account Information</h3>
 
             <div className="profile-item">
               <strong>Email</strong>
 
-              <div>{profile.email}</div>
+              <div className="text-break">{profile.email}</div>
             </div>
 
             <hr />
@@ -109,12 +109,12 @@ export default function Profile() {
           </div>
         </div>
 
-        <div className="col-lg-8">
+        <div className="col-12 col-lg-8">
           <div className="glass-card p-4">
             <h3 className="mb-4">Statistics</h3>
 
             <div className="row g-3">
-              <div className="col-md-4">
+              <div className="col-6 col-sm-4">
                 <div className="analytics-card text-center">
                   <i className="bi bi-collection analytics-icon"></i>
 
@@ -124,7 +124,7 @@ export default function Profile() {
                 </div>
               </div>
 
-              <div className="col-md-4">
+              <div className="col-6 col-sm-4">
                 <div className="analytics-card text-center">
                   <i className="bi bi-star-fill analytics-icon"></i>
 
@@ -134,7 +134,7 @@ export default function Profile() {
                 </div>
               </div>
 
-              <div className="col-md-4">
+              <div className="col-12 col-sm-4">
                 <div className="analytics-card text-center">
                   <i className="bi bi-trophy-fill analytics-icon"></i>
 
@@ -151,7 +151,7 @@ export default function Profile() {
           <MyReports />
 
           <div className="glass-card p-4 mt-4">
-            <div className="d-flex justify-content-between align-items-center mb-4">
+            <div className="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-2 mb-4">
               <h3>My Communities</h3>
 
               <Link to="/my-communities" className="text-decoration-none">
@@ -166,15 +166,17 @@ export default function Profile() {
             ) : (
               profile.communities.slice(0, 3).map((community) => (
                 <div key={community.id} className="glass-card p-3 mb-3">
-                  <div className="d-flex align-items-center justify-content-between">
+                  <div className="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-3">
                     <div className="d-flex align-items-center gap-3">
                       <img
                         src={community.logo}
                         className="details-logo"
                         alt={community.name}
                         style={{
-                          width: "60px",
-                          height: "60px",
+                          width: "50px",
+                          height: "50px",
+                          objectFit: "cover",
+                          borderRadius: "12px",
                         }}
                       />
 
@@ -189,7 +191,7 @@ export default function Profile() {
 
                     <Link
                       to={`/server/${community.id}`}
-                      className="btn-discover text-decoration-none"
+                      className="btn-discover text-decoration-none text-center w-100 w-sm-auto"
                     >
                       View
                     </Link>
@@ -203,7 +205,7 @@ export default function Profile() {
             <h3 className="mb-4">Creator Analytics</h3>
 
             <div className="row g-3">
-              <div className="col-md-3">
+              <div className="col-6 col-sm-3">
                 <div className="analytics-card text-center">
                   <i className="bi bi-eye analytics-icon"></i>
 
@@ -213,7 +215,7 @@ export default function Profile() {
                 </div>
               </div>
 
-              <div className="col-md-3">
+              <div className="col-6 col-sm-3">
                 <div className="analytics-card text-center">
                   <i className="bi bi-box-arrow-up-right analytics-icon"></i>
 
@@ -223,7 +225,7 @@ export default function Profile() {
                 </div>
               </div>
 
-              <div className="col-md-3">
+              <div className="col-6 col-sm-3">
                 <div className="analytics-card text-center">
                   <i className="bi bi-heart-fill analytics-icon"></i>
 
@@ -233,7 +235,7 @@ export default function Profile() {
                 </div>
               </div>
 
-              <div className="col-md-3">
+              <div className="col-6 col-sm-3">
                 <div className="analytics-card text-center">
                   <i className="bi bi-graph-up analytics-icon"></i>
 
@@ -252,23 +254,23 @@ export default function Profile() {
               <>
                 <h4>{profile.bestCommunity.name}</h4>
 
-                <div className="row text-center mt-4">
+                <div className="row row-cols-2 row-cols-sm-3 row-cols-md-5 text-center g-3 mt-3">
                   <div className="col">
                     <strong>👁 {profile.bestCommunity.views}</strong>
 
-                    <div>Views</div>
+                    <div className="text-secondary small">Views</div>
                   </div>
 
                   <div className="col">
                     <strong>🔗 {profile.bestCommunity.clicks}</strong>
 
-                    <div>Clicks</div>
+                    <div className="text-secondary small">Clicks</div>
                   </div>
 
                   <div className="col">
                     <strong>❤️ {profile.bestCommunity.favorites}</strong>
 
-                    <div>Favorites</div>
+                    <div className="text-secondary small">Favorites</div>
                   </div>
 
                   <div className="col">
@@ -276,13 +278,13 @@ export default function Profile() {
                       ⭐ {profile.bestCommunity.rating.toFixed(1)}
                     </strong>
 
-                    <div>Rating</div>
+                    <div className="text-secondary small">Rating</div>
                   </div>
 
                   <div className="col">
                     <strong>🏆 {profile.bestCommunity.points}</strong>
 
-                    <div>Points</div>
+                    <div className="text-secondary small">Points</div>
                   </div>
                 </div>
               </>

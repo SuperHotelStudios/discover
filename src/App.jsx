@@ -24,7 +24,7 @@ import AdminUsers from "./pages/AdminUsers";
 function App() {
   return (
     <BrowserRouter basename="/discover">
-      <div className="min-h-screen bg-slate-950 text-white">
+      <div className="app-shell">
         <Navbar />
 
         <Routes>

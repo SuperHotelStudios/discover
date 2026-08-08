@@ -80,7 +80,7 @@ export default function Servers() {
         />
       </div>
 
-      <div className="d-flex flex-wrap justify-content-center gap-3 mb-5">
+      <div className="category-filters-container mb-4 mb-md-5">
         <button
           className={`category-filter ${
             category === "All" ? "active-filter" : ""
@@ -104,7 +104,7 @@ export default function Servers() {
       </div>
 
       {filteredCommunities.length === 0 ? (
-        <div className="glass-card text-center p-5 empty-state">
+        <div className="glass-card text-center p-4 p-sm-5 empty-state">
           <div className="featured-icon mb-3">🔍</div>
 
           <h3 className="fw-bold">No Communities Found</h3>
@@ -114,13 +114,13 @@ export default function Servers() {
           </p>
         </div>
       ) : (
-        <div className="row g-4">
+        <div className="row g-3 g-md-4">
           {filteredCommunities.map((community) => (
-            <div className="col-lg-4" key={community.id}>
+            <div className="col-12 col-sm-6 col-lg-4" key={community.id}>
               <div className="glass-card community-card h-100">
                 <Link
                   to={`/server/${community.id}`}
-                  className="text-decoration-none text-white"
+                  className="text-decoration-none text-white d-flex flex-column flex-grow-1"
                 >
                   <img
                     src={
@@ -131,7 +131,7 @@ export default function Servers() {
                     className="community-banner"
                   />
 
-                  <div className="p-4 d-flex flex-column flex-grow-1">
+                  <div className="p-3 p-sm-4 d-flex flex-column flex-grow-1">
                     <div className="d-flex align-items-center gap-3 mb-3">
                       <img
                         src={
@@ -156,16 +156,16 @@ export default function Servers() {
                       </div>
                     </div>
 
-                    <p className="text-secondary">{community.description}</p>
+                    <p className="text-secondary flex-grow-1">{community.description}</p>
                   </div>
                 </Link>
 
-                <div className="text-center p-4 pt-0">
+                <div className="text-center p-3 p-sm-4 pt-0">
                   <a
                     href={community.inviteLink}
                     target="_blank"
                     rel="noreferrer"
-                    className="btn-discover btn-sm text-decoration-none"
+                    className="btn-discover btn-sm text-decoration-none w-100 d-block"
                   >
                     <i className="bi bi-discord me-2"></i>
                     Join Community

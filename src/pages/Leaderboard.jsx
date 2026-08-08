@@ -54,62 +54,85 @@ export default function Leaderboard() {
       </div>
 
       <div className="leaderboard-list">
-        {leaderboard.map((community, index) => (
-          <div className="glass-card leaderboard-card" key={community.id}>
-            <div className="leaderboard-rank">{getMedal(index + 1)}</div>
-
-            <img
-              src={community.logo || "https://placehold.co/100x100?text=Logo"}
-              alt={community.name}
-              className="leaderboard-logo"
-            />
-
-            <div className="leaderboard-info">
-              <h4 className="fw-bold mb-1">
-                {community.name}
-
-                {community.verified && (
-                  <span className="verified-badge ms-2">✔ Verified</span>
-                )}
-
-                {community.featured && (
-                  <span className="featured-badge ms-2">⭐ Featured</span>
-                )}
-              </h4>
-
-              <div className="text-secondary">
-                👥 {community.memberCount.toLocaleString()} Members
-              </div>
-
-              <div className="text-secondary">
-                👁 {community.views.toLocaleString()} Views
-              </div>
-
-              <div className="text-secondary">
-                ❤️ {community.favorites.toLocaleString()} Favorites
-              </div>
-
-              <div className="text-secondary">
-                ⭐ {community.averageRating.toFixed(1)}
-              </div>
-            </div>
-
-            <div className="leaderboard-points">
-              <div className="points-value">
-                {community.totalPoints.toLocaleString()}
-              </div>
-
-              <small className="text-secondary">Points</small>
-            </div>
-
-            <Link
-              to={`/server/${community.id}`}
-              className="btn-discover text-decoration-none"
-            >
-              View
+        {leaderboard.length === 0 ? (
+          <div className="glass-card leaderboard-empty">
+            <div className="leaderboard-empty-icon">🏆</div>
+            <h3 className="leaderboard-empty-title">
+              No communities ranked yet
+            </h3>
+            <p className="leaderboard-empty-text">
+              This leaderboard is empty right now. Add your community and get it
+              featured to claim the top spot.
+            </p>
+            <Link to="/servers" className="btn-discover text-decoration-none">
+              Explore communities
             </Link>
           </div>
-        ))}
+        ) : (
+          leaderboard.map((community, index) => (
+            <div
+              className="glass-card leaderboard-card p-3 p-sm-4"
+              key={community.id}
+            >
+              <div className="leaderboard-rank fw-bold">
+                {getMedal(index + 1)}
+              </div>
+
+              <img
+                src={community.logo || "https://placehold.co/100x100?text=Logo"}
+                alt={community.name}
+                className="leaderboard-logo"
+              />
+
+              <div className="leaderboard-info">
+                <h4 className="fw-bold mb-1 d-flex flex-wrap align-items-center justify-content-center justify-content-sm-start gap-1">
+                  {community.name}
+
+                  {community.verified && (
+                    <span className="verified-badge">✔ Verified</span>
+                  )}
+
+                  {community.featured && (
+                    <span className="featured-badge">⭐ Featured</span>
+                  )}
+                </h4>
+
+                <div className="d-flex flex-wrap justify-content-center justify-content-sm-start gap-3 mt-2">
+                  <span className="text-secondary">
+                    👥 {community.memberCount.toLocaleString()} Members
+                  </span>
+
+                  <span className="text-secondary">
+                    👁 {community.views.toLocaleString()} Views
+                  </span>
+
+                  <span className="text-secondary">
+                    ❤️ {community.favorites.toLocaleString()} Favorites
+                  </span>
+
+                  <span className="text-secondary">
+                    ⭐ {community.averageRating.toFixed(1)}
+                  </span>
+                </div>
+              </div>
+
+              <div className="leaderboard-points">
+                <div className="points-value">
+                  {community.totalPoints.toLocaleString()}
+                </div>
+
+                <small className="text-secondary">Points</small>
+              </div>
+
+              <Link
+                to={`/server/${community.id}`}
+                className="btn-discover text-decoration-none text-center w-100 w-sm-auto"
+              >
+                View
+              </Link>
+            </div>
+          ))
+        )}
       </div>
     </section>
   );

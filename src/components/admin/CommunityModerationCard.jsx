@@ -53,21 +53,16 @@ export default function CommunityModerationCard({ community, refresh }) {
   return (
     <>
       <div
-        className="glass-card p-4 mb-4"
+        className="glass-card p-3 p-sm-4 mb-4 moderation-card"
         style={{ cursor: "pointer" }}
         onClick={() => setShowDetails(true)}
       >
-        <div className="d-flex justify-content-between align-items-start">
-          <div className="d-flex gap-3">
+        <div className="d-flex flex-column flex-lg-row justify-content-between align-items-start gap-3">
+          <div className="d-flex gap-3 w-100">
             <img
               src={community.logo}
               alt={community.name}
-              style={{
-                width: 80,
-                height: 80,
-                borderRadius: 16,
-                objectFit: "cover",
-              }}
+              className="details-logo flex-shrink-0"
             />
 
             <div>
@@ -101,7 +96,7 @@ export default function CommunityModerationCard({ community, refresh }) {
             </div>
           </div>
 
-          <div className="d-flex flex-column gap-2">
+          <div className="d-flex flex-row flex-wrap flex-lg-column gap-2 moderation-actions w-100 w-lg-auto">
             <button
               className="btn btn-outline-primary"
               onClick={(e) => {
