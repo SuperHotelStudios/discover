@@ -135,31 +135,57 @@ export default function Navbar() {
 
                 <hr className="dropdown-divider" />
 
-                <Link to="/profile" className="dropdown-link" onClick={closeMenu}>
+                <Link
+                  to="/profile"
+                  className="dropdown-link"
+                  onClick={closeMenu}
+                >
                   👤 My Profile
                 </Link>
 
-                <Link to="/my-communities" className="dropdown-link" onClick={closeMenu}>
+                <Link
+                  to="/my-communities"
+                  className="dropdown-link"
+                  onClick={closeMenu}
+                >
                   📢 My Communities
                 </Link>
 
-                <Link to="/profile" className="dropdown-link" onClick={closeMenu}>
+                <Link
+                  to="/profile"
+                  className="dropdown-link"
+                  onClick={closeMenu}
+                >
                   ⭐ My Reviews
                 </Link>
 
-                <Link to="/leaderboard" className="dropdown-link" onClick={closeMenu}>
+                <Link
+                  to="/leaderboard"
+                  className="dropdown-link"
+                  onClick={closeMenu}
+                >
                   🏆 Leaderboard
                 </Link>
 
-                <Link to="/dashboard" className="dropdown-link" onClick={closeMenu}>
+                <Link
+                  to="/dashboard"
+                  className="dropdown-link"
+                  onClick={closeMenu}
+                >
                   📊 Creator Dashboard
                 </Link>
 
-                {(user?.role === "ADMIN" || user?.role === "OWNER") && (
+                {["ADMIN", "OWNER"].includes(
+                  String(user?.role || "").toUpperCase()
+                ) && (
                   <>
                     <hr className="dropdown-divider" />
 
-                    <Link to="/admin" className="dropdown-link" onClick={closeMenu}>
+                    <Link
+                      to="/admin"
+                      className="dropdown-link"
+                      onClick={closeMenu}
+                    >
                       🛠 Admin Dashboard
                     </Link>
                   </>
@@ -172,7 +198,13 @@ export default function Navbar() {
 
                 <hr className="dropdown-divider" />
 
-                <button onClick={() => { closeMenu(); logout(); }} className="dropdown-item logout-item">
+                <button
+                  onClick={() => {
+                    closeMenu();
+                    logout();
+                  }}
+                  className="dropdown-item logout-item"
+                >
                   🚪 Logout
                 </button>
               </div>

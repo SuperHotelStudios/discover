@@ -20,6 +20,8 @@ import AdminReports from "./pages/AdminReports";
 import MyReports from "./components/profile/MyReports";
 import AdminCommunities from "./pages/AdminCommunities";
 import AdminUsers from "./pages/AdminUsers";
+import AdminTranscripts from "./pages/AdminTranscripts";
+import AdminAuditLogs from "./pages/AdminAuditLogs";
 
 function App() {
   return (
@@ -53,6 +55,8 @@ function App() {
           <Route path="/my-reports" element={<MyReports />} />
           <Route path="/admin/communities" element={<AdminCommunities />} />
           <Route path="/admin/users" element={<AdminUsers />} />
+          <Route path="/admin/transcripts" element={<AdminTranscripts />} />
+          <Route path="/admin/audit-logs" element={<AdminAuditLogs />} />
         </Routes>
 
         <Footer />

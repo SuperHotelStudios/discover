@@ -4,7 +4,7 @@ import { api } from "../services/api";
 import { useAuth } from "../context/AuthContext";
 import { showError, showSuccess } from "../utils/toast";
 
-const roles = ["USER", "STAFF", "ADMIN", "OWNER"];
+const roles = ["USER", "ADMIN", "OWNER"];
 
 export default function AdminUsers() {
   const { loading, isAuthenticated, user: currentUser } = useAuth();
@@ -38,7 +38,11 @@ export default function AdminUsers() {
   async function changeRole(targetUser, role) {
     if (role === targetUser.role) return;
 
-    if (!window.confirm(`Change ${targetUser.displayName || targetUser.username} to ${role}?`)) {
+    if (
+      !window.confirm(
+        `Change ${targetUser.displayName || targetUser.username} to ${role}?`
+      )
+    ) {
       return;
     }
 
@@ -60,7 +64,7 @@ export default function AdminUsers() {
   async function changeBanStatus(targetUser) {
     const action = targetUser.isBanned ? "unban" : "ban";
     const reason = window.prompt(
-      `Enter the reason to ${action} ${targetUser.displayName || targetUser.username}:`,
+      `Enter the reason to ${action} ${targetUser.displayName || targetUser.username}:`
     );
 
     if (!reason?.trim()) {
@@ -102,7 +106,7 @@ export default function AdminUsers() {
   }
 
   return (
-    <section className="container profile-page">
+    <section className="container profile-page admin-users-page">
       <div className="glass-card p-3 p-sm-4 p-md-5">
         <div className="d-flex justify-content-between align-items-center gap-3 flex-wrap mb-4">
           <div>
@@ -113,7 +117,7 @@ export default function AdminUsers() {
                 : "View Discover users. Only owners can make changes."}
             </p>
           </div>
-          <span className="badge bg-primary">{users.length} Users</span>
+          <span className="admin-user-count">{users.length} users</span>
         </div>
 
         <form
@@ -140,7 +144,7 @@ export default function AdminUsers() {
           <div className="text-center py-5 text-secondary">No users found.</div>
         ) : (
           <div className="table-responsive">
-            <table className="table table-dark table-hover align-middle mb-0">
+            <table className="table admin-users-table align-middle mb-0">
               <thead>
                 <tr>
                   <th>User</th>
@@ -155,7 +159,8 @@ export default function AdminUsers() {
                 {users.map((targetUser) => {
                   const isSelf = targetUser.id === currentUser.id;
                   const isUpdating = updatingId === targetUser.id;
-                  const canEditTarget = canManageUsers && !isSelf && targetUser.role !== "OWNER";
+                  const canEditTarget =
+                    canManageUsers && !isSelf && targetUser.role !== "OWNER";
 
                   return (
                     <tr key={targetUser.id}>
@@ -173,45 +178,66 @@ export default function AdminUsers() {
                             className="rounded-circle"
                           />
                           <div>
-                            <div>{targetUser.displayName || targetUser.username}</div>
-                            <small className="text-secondary">@{targetUser.username}</small>
+                            <div>
+                              {targetUser.displayName || targetUser.username}
+                            </div>
+                            <small className="text-secondary">
+                              @{targetUser.username}
+                            </small>
                           </div>
                         </div>
                       </td>
-                      <td><code>{targetUser.discordId}</code></td>
                       <td>
-                        <span className={`badge ${targetUser.role === "OWNER" ? "bg-danger" : targetUser.role === "ADMIN" ? "bg-primary" : targetUser.role === "STAFF" ? "bg-info text-dark" : "bg-secondary"}`}>
+                        <code className="admin-discord-id">
+                          {targetUser.discordId}
+                        </code>
+                      </td>
+                      <td>
+                        <span
+                          className={`admin-role-badge ${targetUser.role === "OWNER" ? "is-owner" : targetUser.role === "ADMIN" ? "is-admin" : "is-user"}`}
+                        >
                           {targetUser.role}
                         </span>
                       </td>
                       <td>
                         {targetUser.isBanned ? (
                           <div>
-                            <span className="badge bg-danger">Banned</span>
-                            <div className="small text-secondary mt-1">{targetUser.banReason}</div>
+                            <span className="admin-status-badge is-banned">
+                              Banned
+                            </span>
+                            <div className="small text-secondary mt-1">
+                              {targetUser.banReason}
+                            </div>
                           </div>
                         ) : (
-                          <span className={targetUser.verified ? "badge bg-success" : "badge bg-secondary"}>
+                          <span
+                            className={`admin-status-badge ${targetUser.verified ? "is-verified" : "is-unverified"}`}
+                          >
                             {targetUser.verified ? "Verified" : "Unverified"}
                           </span>
                         )}
                       </td>
-                      <td>{new Date(targetUser.createdAt).toLocaleDateString()}</td>
+                      <td>
+                        {new Date(targetUser.createdAt).toLocaleDateString()}
+                      </td>
                       {canManageUsers && (
                         <td className="text-end">
                           {canEditTarget ? (
                             <div className="d-flex justify-content-end gap-2">
                               <select
-                                className="form-select form-select-sm"
-                                style={{ maxWidth: "115px" }}
+                                className="form-select form-select-sm admin-role-select"
                                 value={targetUser.role}
                                 disabled={isUpdating}
-                                onChange={(event) => changeRole(targetUser, event.target.value)}
+                                onChange={(event) =>
+                                  changeRole(targetUser, event.target.value)
+                                }
                               >
-                                {roles.map((role) => <option key={role}>{role}</option>)}
+                                {roles.map((role) => (
+                                  <option key={role}>{role}</option>
+                                ))}
                               </select>
                               <button
-                                className={targetUser.isBanned ? "btn btn-sm btn-success" : "btn btn-sm btn-danger"}
+                                className={`btn btn-sm admin-ban-button ${targetUser.isBanned ? "is-unban" : "is-ban"}`}
                                 disabled={isUpdating}
                                 onClick={() => changeBanStatus(targetUser)}
                               >
@@ -219,7 +245,9 @@ export default function AdminUsers() {
                               </button>
                             </div>
                           ) : (
-                            <span className="text-secondary small">{isSelf ? "Your account" : "Protected"}</span>
+                            <span className="text-secondary small">
+                              {isSelf ? "Your account" : "Protected"}
+                            </span>
                           )}
                         </td>
                       )}
