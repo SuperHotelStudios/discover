@@ -20,8 +20,6 @@ export default function ServerDetails() {
   const [hover, setHover] = useState(0);
 
   const [hasRated, setHasRated] = useState(false);
-  const [showRatingToast, setShowRatingToast] = useState(false);
-
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
 

@@ -1,5 +1,3 @@
-import DeleteCommunityModal from "./DeleteCommunityModal";
-
 export default function CommunityDetailsModal({
   show,
   onClose,
@@ -7,7 +5,6 @@ export default function CommunityDetailsModal({
   onVerify,
   onFeature,
   onHide,
-  refresh,
 }) {
   if (!show || !community) return null;
 
@@ -119,11 +116,6 @@ export default function CommunityDetailsModal({
 
           <button className="btn btn-danger">🗑 Delete</button>
 
-          {/* <DeleteCommunityModal
-            community={community}
-            refresh={refresh}
-            showButton
-          /> */}
         </div>
       </div>
     </div>

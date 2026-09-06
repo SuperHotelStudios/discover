@@ -133,6 +133,15 @@ export default function CommunityModerationCard({ community, refresh }) {
         community={community}
         refresh={refresh}
       />
+      <CommunityDetailsModal
+        show={showDetails}
+        onClose={() => setShowDetails(false)}
+        community={community}
+        onVerify={toggleVerify}
+        onFeature={toggleFeature}
+        onHide={toggleHidden}
+        refresh={refresh}
+      />
     </>
   );
 }

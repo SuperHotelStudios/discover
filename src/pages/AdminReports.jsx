@@ -28,10 +28,6 @@ export default function AdminReports() {
     loadReports(status);
   }, [status]);
 
-  function tabClass(value) {
-    return value === status ? "btn-discover" : "btn btn-outline-light";
-  }
-
   return (
     <section className="container profile-page">
       <div className="glass-card profile-header p-4 p-sm-5 mb-4 text-center">

@@ -30,7 +30,7 @@ export default function AuthCallback() {
         setUser(user);
         showSuccess("Logged in successfully.");
         navigate("/", { replace: true });
-      } catch (err) {
+      } catch {
         localStorage.removeItem("token");
         showError("Discord login failed. Please try again.");
         navigate("/login", { replace: true });

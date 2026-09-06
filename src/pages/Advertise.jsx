@@ -73,6 +73,7 @@ export default function Advertise() {
     }
 
     try {
+      setSubmitting(true);
       const response = await api("/advertisements", {
         method: "POST",
         body: JSON.stringify({
@@ -98,6 +99,8 @@ export default function Advertise() {
     } catch (err) {
       console.error(err);
       showError(err.message);
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -186,8 +189,8 @@ export default function Advertise() {
             </div>
           </div>
 
-          <button type="submit" className="btn-discover w-100 w-sm-auto">
-            Advertise Community
+          <button type="submit" className="btn-discover w-100 w-sm-auto" disabled={submitting}>
+            {submitting ? "Submitting..." : "Advertise Community"}
           </button>
         </form>
       </div>

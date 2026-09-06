@@ -18,17 +18,16 @@ export async function api(endpoint, options = {}) {
   });
 
   if (!response.ok) {
-    let error = {};
+    let errorMessage = "Something went wrong.";
 
     try {
-      error = await response.json();
+      const error = await response.json();
+      errorMessage = error.message || errorMessage;
     } catch {
-      error = {};
+      errorMessage = "Something went wrong.";
     }
 
-    const err = new Error(
-      error.message || "Something went wrong."
-    );
+    const err = new Error(errorMessage);
 
     err.status = response.status;
 
