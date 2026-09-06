@@ -115,7 +115,6 @@ export default function CommunityDetailsModal({
           </button>
 
           <button className="btn btn-danger">🗑 Delete</button>
-
         </div>
       </div>
     </div>

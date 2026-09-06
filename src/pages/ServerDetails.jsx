@@ -197,7 +197,9 @@ export default function ServerDetails() {
         <div className="row text-center g-3 g-md-4">
           <div className="col-6 col-sm-3">
             <h5>👤 Advertised By</h5>
-            <p className="mb-0">{community.createdBy?.displayName || "Unknown"}</p>
+            <p className="mb-0">
+              {community.createdBy?.displayName || "Unknown"}
+            </p>
           </div>
 
           <div className="col-6 col-sm-3">
@@ -212,7 +214,9 @@ export default function ServerDetails() {
 
           <div className="col-6 col-sm-3">
             <h5>🏆 Points</h5>
-            <p className="mb-0">{(community.totalPoints ?? 0).toLocaleString()}</p>
+            <p className="mb-0">
+              {(community.totalPoints ?? 0).toLocaleString()}
+            </p>
           </div>
 
           <hr />

@@ -189,7 +189,11 @@ export default function Advertise() {
             </div>
           </div>
 
-          <button type="submit" className="btn-discover w-100 w-sm-auto" disabled={submitting}>
+          <button
+            type="submit"
+            className="btn-discover w-100 w-sm-auto"
+            disabled={submitting}
+          >
             {submitting ? "Submitting..." : "Advertise Community"}
           </button>
         </form>
