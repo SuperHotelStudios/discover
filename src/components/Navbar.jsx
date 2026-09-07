@@ -32,11 +32,7 @@ export default function Navbar() {
     <nav className="custom-navbar fixed-top">
       <div className="container navbar-wrapper">
         <Link className="brand-logo" to="/" onClick={closeMenu}>
-          <img
-            src={`${import.meta.env.BASE_URL}logo.svg`}
-            alt="Discover"
-            className="navbar-logo"
-          />
+          <span>Discover</span>
         </Link>
 
         <div className={`navbar-links ${isMenuOpen ? "show" : ""}`}>
