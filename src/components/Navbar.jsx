@@ -33,7 +33,7 @@ export default function Navbar() {
       <div className="container navbar-wrapper">
         <Link className="brand-logo" to="/" onClick={closeMenu}>
           <img
-            src={`${import.meta.env.BASE_URL}favicon.png`}
+            src={`${import.meta.env.BASE_URL}logo.svg`}
             alt="Discover"
             className="navbar-logo"
           />
