@@ -10,7 +10,7 @@ export default function Login() {
     <div className="login-page">
       <div className="login-card">
         <img
-          src={`${import.meta.env.BASE_URL}logo.png`}
+          src={`${import.meta.env.BASE_URL}favicon.png`}
           className="login-logo"
         />
 
