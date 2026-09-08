@@ -30,7 +30,7 @@ export default function Home() {
 
   if (loading) {
     return (
-      <section className="container text-center py-5">
+      <section className="loading-screen">
         <h2>Loading...</h2>
       </section>
     );

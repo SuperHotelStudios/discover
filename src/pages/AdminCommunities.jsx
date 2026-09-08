@@ -25,7 +25,7 @@ export default function AdminCommunities() {
 
   if (loading) {
     return (
-      <section className="container py-5 text-center">
+      <section className="loading-screen">
         <h2>Loading Communities...</h2>
       </section>
     );

@@ -139,7 +139,7 @@ export default function AdminUsers() {
         </form>
 
         {pageLoading ? (
-          <div className="text-center py-5">Loading users...</div>
+          <div className="loading-screen">Loading users...</div>
         ) : users.length === 0 ? (
           <div className="text-center py-5 text-secondary">No users found.</div>
         ) : (

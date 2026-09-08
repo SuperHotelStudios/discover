@@ -34,7 +34,7 @@ export default function MyCategoryRequests() {
 
   if (pageLoading) {
     return (
-      <section className="container py-5 text-center">
+      <section className="loading-screen">
         <h2>Loading Category Requests...</h2>
       </section>
     );

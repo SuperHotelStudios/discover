@@ -54,7 +54,7 @@ export default function Servers() {
 
   if (loading) {
     return (
-      <section className="container servers-page text-center py-5">
+      <section className="loading-screen">
         <h2>Loading communities...</h2>
       </section>
     );

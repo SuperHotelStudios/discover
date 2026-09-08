@@ -72,7 +72,7 @@ export default function AdminCategoryRequests() {
 
   if (user?.role !== "ADMIN" && user?.role !== "OWNER") {
     return (
-      <section className="container py-5 text-center">
+      <section className="loading-screen">
         <h2>Access Denied</h2>
       </section>
     );

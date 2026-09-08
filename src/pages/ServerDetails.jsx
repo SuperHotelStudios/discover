@@ -161,7 +161,7 @@ export default function ServerDetails() {
 
   if (loading) {
     return (
-      <section className="container py-5 text-center">
+      <section className="loading-screen">
         <h2>Loading...</h2>
       </section>
     );

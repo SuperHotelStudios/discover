@@ -24,7 +24,7 @@ export default function AdminDashboard() {
 
   if (loading) {
     return (
-      <section className="container py-5 text-center">
+      <section className="loading-screen">
         <h2>Loading Admin Dashboard...</h2>
       </section>
     );

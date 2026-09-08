@@ -189,7 +189,7 @@ export default function AdminTranscripts() {
       </div>
 
       {pageLoading ? (
-        <div className="transcript-empty p-5 text-center">
+        <div className="loading-screen">
           <h3>Loading transcripts...</h3>
         </div>
       ) : transcripts.length === 0 ? (
