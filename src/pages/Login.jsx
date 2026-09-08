@@ -9,11 +9,6 @@ export default function Login() {
   return (
     <div className="login-page">
       <div className="login-card">
-        <img
-          src={`${import.meta.env.BASE_URL}favicon.png`}
-          className="login-logo"
-        />
-
         <h1 className="login-title">Welcome to Discover</h1>
 
         <p className="login-subtitle">
