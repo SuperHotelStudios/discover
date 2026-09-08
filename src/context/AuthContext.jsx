@@ -38,7 +38,7 @@ export function AuthProvider({ children }) {
   function logout() {
     localStorage.removeItem("token");
     setUser(null);
-    window.location.href = "/";
+    window.location.href = import.meta.env.BASE_URL;
   }
 
   return (
